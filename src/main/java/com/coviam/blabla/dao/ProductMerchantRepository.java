@@ -1,16 +1,14 @@
 package com.coviam.blabla.dao;
 
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import com.coviam.blabla.entity.ProductMerchant;
+import com.coviam.blabla.entity.ProductMerchantId;
 
-public interface ProductMerchantRepository extends CrudRepository<ProductMerchant, String> {
+public interface ProductMerchantRepository extends CrudRepository<ProductMerchant, ProductMerchantId> {
 
-<<<<<<< HEAD
-	public List<ProductMerchant> findByProductCodeAndMerchantIdOrderByScore(int productCode, int merchantId);
-	public List<ProductMerchant> findByProductCode(int productCode);
-=======
-	public ProductMerchant findByProductCodeAndMerchantId(int productCode, int merchantId);
+	public List<ProductMerchant> findByProductCodeAndMerchantId(ProductMerchantId pmid);
+	//public List<ProductMerchant> findByProductCode(int productCode);
 	
->>>>>>> 9eff2d342d75e30c08fd1b63d7b77175e05d8e25
 }
