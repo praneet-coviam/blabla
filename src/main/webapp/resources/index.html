@@ -23,8 +23,27 @@
                 <li><a href="#phone">Phone</a></li>
                 <li><a href="#book">Book</a></li>
                 <li><a href="#fashion">Fashion</a></li>
-                <li><a href="#shoes">Shoes</a></li>               
+                <li><a href="#shoes">Shoes</a></li>     
+                <li><a href="#email_modal">My Orders</a></li>
               </ul>
+       
+<div class="row" style="padding-top:20px">
+            <a class="dropdown-button btn waves-effect waves-light btn-floating" href="#" data-activates='dropdown-nav'><i class="material-icons">menu</i></a>                            
+            <ul id="dropdown-nav" class="dropdown-content" style="z-index:900">
+                <li>
+                    <div class="userView">
+                        <div class="background">
+                            <img src="images/loogo.png" style="width:100%;">
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Phone</a></li>
+                <li><a href="#">Book</a></li>
+                <li><a href="#">Fashion</a></li>
+                <li><a href="#">Shoes</a></li>
+                <li><a href="#email_modal">My Orders</a></li>
+            </ul>
+        </div>
         </div>
         <div class="col s10" style="margin-left:0px;">  
          <div class="row">
@@ -34,8 +53,9 @@
                         <input id="icon_prefix" type="text" class="validate" placeholder="Search..">
                     </div>
                 </div>
-                <div class="col s1 offset-s1">
+                <div class="col l2 s3 m3 valign-wrapper left" style="padding-left:65px">
                     <img src='./images/cart.png' style="height:55px;width:50px">
+                    <div class="numberCircle">1</div>
                 </div>
                 <div class="col s10 offset-s1">
                    <div ng-view></div>
@@ -49,6 +69,6 @@
 
     <script type="text/javascript" src="js/app.js"></script>
 
-    <!-- <script type="text/javascript" src= "js/services.js"></script> -->
+     <script type="text/javascript" src= "js/services.js"></script> 
 </body>
 </html>

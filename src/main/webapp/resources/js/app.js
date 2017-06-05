@@ -8,17 +8,36 @@ myApp.config(function($routeProvider) {
         templateUrl : "Templates/home.html",
         controller: 'homeController'
     })
-    .when("/Product", {
-        templateUrl : "product.html"
+    .when("/product", {
+        templateUrl : "Templates/product.html",
+        controller: 'productController'
     })
     .when("/list", {
-        templateUrl : "list.html"
+        templateUrl : "Templates/list.html",
+        controller: 'listController'
+        
     })
     .when("/kart", {
-        templateUrl : "kart.html"
+        templateUrl : "Templates/kart.html",
+        controller: 'kartController'
     });
 });
 myApp.controller('homeController', function($scope) {
 	$('.carousel.carousel-slider').carousel({fullWidth: true});
 	
+});
+myApp.controller('productController', function($scope) {
+    
+	$scope.name="ankit";
+
+});
+myApp.controller('listController', function($scope,userRepository) {
+    $scope.myMovie=function(){
+          userRepository.getByCategory().success(function(data) {
+           $scope.data = data;
+        });
+      }
+});
+myApp.controller('kartController', function($scope) {
+	$scope.name="kart";
 });
