@@ -1,17 +1,15 @@
 package com.coviam.blabla.controller;
 
 import java.util.List;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.coviam.blabla.entity.Product;
+import com.coviam.blabla.entity.ProductAndMerchant;
 import com.coviam.blabla.entity.ProductMerchant;
+import com.coviam.blabla.service.ProductMerchantServiceInterface;
 import com.coviam.blabla.service.ProductServiceInterface;
 
 @RestController
@@ -20,81 +18,60 @@ public class ProductController {
 	@Autowired
 	ProductServiceInterface ps;
 	
+	@Autowired
+	ProductMerchantServiceInterface pms;
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping("/")
-	public JSONObject getProduct(){
-		JSONObject toReturn = new JSONObject();
-		JSONArray productArray = new JSONArray();
-		String category = "";
-		
+	@RequestMapping(value = "/")
+	public Iterable<Product> getMyProduct(){
+		Iterable<Product> p = ps.getAllProducts();
+		return p;
+	}
+	
+//	@RequestMapping(method= RequestMethod.POST)
+//	public OrderItem getMyProduct(OrderAndItemDetails input){
+//		
+//		Order order = new Order();
+//		order.setEmail(input.getEmail());
+//		
+//		save(order);
+//		
+//		Long id= order.getId();
+//		OrderItem oItem = new OrderItem();
+//		oItem.setOrderId(id);
+//	
+//		save(oItem);
+//		
+//		return oItem;
+//		
+//	}
+//	
+	
+	@RequestMapping("/allproducts")
+	public Iterable<Product> getProduct(){
 		Iterable<Product> productList = ps.getAllProducts();
-		for(Product product : productList){
-			JSONObject productJson = new JSONObject();
-			productJson.put("code", product.getProductCode());
-			productJson.put("name", product.getProductName());
-			productJson.put("usp", product.getProductUsp());
-			productJson.put("desc", product.getProductDesc());
-			productJson.put("brand", product.getProductBrand());
-			productJson.put("imageurl", product.getProductImage());
-			category = product.getProductCategory();
-			productArray.add(productJson);
-		}
-		toReturn.put(category,productArray);
+		return productList;
 		
-		return toReturn;
-//		ModelAndView modelAndView = new ModelAndView("home");
-//		modelAndView.addObject("home", toReturn);
-//		return modelAndView;
 		}
 	
 	
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/category/{query}")
-	public JSONObject getProductByCategory(@PathVariable("query") String query){
-
-		JSONObject toReturn = new JSONObject();
-		JSONObject productJson = new JSONObject();	
-		JSONArray productArray = new JSONArray();
-		String category = "";
+	public List<Product> getProductByCategory(@PathVariable("query") String query){
+		
 		List<Product> productList = ps.findProduct(query);
-		for(Product product : productList){
-			
-			productJson.put("code", product.getProductCode());
-			productJson.put("name", product.getProductName());
-			productJson.put("usp", product.getProductUsp());
-			productJson.put("desc", product.getProductDesc());
-			productJson.put("brand", product.getProductBrand());
-			productJson.put("imageurl", product.getProductImage());
-			category = product.getProductCategory();
-			productArray.add(productJson);
-		}
-		toReturn.put(category,productArray);
-		return toReturn;
+		return productList;
 		
 	}
 	
 	
 	@RequestMapping("/product/{pCode}/{mId}")
-	public JSONObject getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
+	public ProductAndMerchant getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
 
-		JSONObject toReturn = new JSONObject();
-		JSONObject productJson = new JSONObject();	
-		JSONArray productArray = new JSONArray();
-		long category = 0;
-		List<ProductMerchant> productMerchantList = ps.findAndOrder(pCode, mId);
-		for(ProductMerchant productMerchant : productMerchantList){
-			
-			productJson.put("code", productMerchant.getProdMerchGroupId());
-			productJson.put("name", productMerchant.getPrice());
-			productJson.put("usp", productMerchant.getScore());
-			productJson.put("desc", productMerchant.getStock());
-			category = productMerchant.getScore();
-			productArray.add(productJson);
-		}
-		toReturn.put(category,productArray);
-		return toReturn;
+		
+		ProductMerchant productMerchantList = pms.getProductDetails(pCode, mId);
+		Product productList = ps.getProduct(pCode);
+		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
+		return  productAndMerchantList;
 		
 	}
 	
