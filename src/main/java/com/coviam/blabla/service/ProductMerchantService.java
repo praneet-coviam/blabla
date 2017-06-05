@@ -8,7 +8,7 @@ import com.coviam.blabla.entity.ProductMerchant;
 import com.coviam.blabla.entity.ProductMerchantId;
 
 @Service
-public class ProductMerchantService implements ProductMerchantServiceInterface{
+public class ProductMerchantService implements ProductMerchantServiceInterface {
 
 	@Autowired
 	ProductMerchantRepository pmr;
@@ -16,16 +16,17 @@ public class ProductMerchantService implements ProductMerchantServiceInterface{
 	@Override
 	public List<ProductMerchant> getProductDetails(int productCode, int merchantId) {
 		// TODO Auto-generated method stub
-		ProductMerchantId pmid = new ProductMerchantId(productCode,merchantId);
-		List<ProductMerchant> productmerchantlist = pmr.findByProductCodeAndMerchantId(pmid);		
+		ProductMerchantId pmid = new ProductMerchantId(productCode, merchantId);
+		List<ProductMerchant> productmerchantlist = pmr.findByProductmerchantid(pmid);
 		return productmerchantlist;
 	}
 
-//	@Override
-//	public List<ProductMerchant> getMerchantDetails(int productCode) {
-//		// TODO Auto-generated method stub
-//		List<ProductMerchant> productmerchantlist = (List<ProductMerchant>) pmr.findByProductCode(productCode);
-//		return productmerchantlist;
-//	}
+	@Override
+	public List<ProductMerchant> getMerchantDetails(int productCode) {
+		// TODO Auto-generated method stub
+		List<ProductMerchant> productmerchantlist = pmr.findByProductmerchantidProductCode(productCode);
+		return productmerchantlist;
+	}
+
 
 }
