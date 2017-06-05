@@ -1,39 +1,47 @@
 package com.coviam.blabla.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "product_merchant")
-public class ProductMerchant {
+public class ProductMerchant implements Serializable {
 
-	 @EmbeddedId
-	 ProdMerchGroupId prodMerchGroupId;
-	 
-	 @Column(name = "price")
-	 Float price;
-	 
-	 @Column(name = "stock")
-	 long stock;
-	 
-	 @Column(name = "score")
-	 long score;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	public ProdMerchGroupId getProdMerchGroupId() {
-		return prodMerchGroupId;
-	}
+	@Id
+	@Embedded
+	private ProductMerchantId productmerchantid;
+	
+//	@Column(name = "product_code")
+//	int productCode;
+//
+//	@Column(name = "merchant_id")
+//	int merchantId;
 
-	public void setProdMerchGroupId(ProdMerchGroupId prodMerchGroupId) {
-		this.prodMerchGroupId = prodMerchGroupId;
-	}
+	@Column(name = "price")
+	float price;
 
-	public Float getPrice() {
+	@Column(name = "stock")
+	long stock;
+
+	@Column(name = "score")
+	long score;
+
+	
+
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Float price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
@@ -53,9 +61,20 @@ public class ProductMerchant {
 		this.score = score;
 	}
 
+	public ProductMerchantId getProductmerchantid() {
+		return productmerchantid;
+	}
+
+	public void setProductmerchantid(ProductMerchantId productmerchantid) {
+		this.productmerchantid = productmerchantid;
+	}
+
 	@Override
 	public String toString() {
-		return "ProductMerchant [prodMerchGroupId=" + prodMerchGroupId + ", price=" + price + ", stock=" + stock
+		return "ProductMerchant [productmerchantid=" + productmerchantid + ", price=" + price + ", stock=" + stock
 				+ ", score=" + score + "]";
 	}
+
+	
+
 }

@@ -1,14 +1,10 @@
 package com.coviam.blabla.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.coviam.blabla.dao.ProductMerchantRepository;
 import com.coviam.blabla.dao.ProductRepository;
 import com.coviam.blabla.entity.Product;
-import com.coviam.blabla.entity.ProductMerchant;
 
 @Service
 public class ProductService implements ProductServiceInterface{
@@ -16,13 +12,13 @@ public class ProductService implements ProductServiceInterface{
 	@Autowired
 	ProductRepository pr;
 	
-	@Autowired
-	ProductMerchantRepository pmr;
+//	@Autowired
+//	ProductMerchantRepository pmr;
 	
 	@Override
-	public Iterable<Product> getAllProducts() {
+	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
-		return pr.findAll();
+		return (List<Product>) pr.findAll();
 	}
 
 	@Override
@@ -32,9 +28,9 @@ public class ProductService implements ProductServiceInterface{
 	}
 
 	@Override
-	public ProductMerchant findAndOrder(int pCode, int mId) {
+	public Product getProduct(int productCode) {
 		// TODO Auto-generated method stub
-		return pmr.findByProductCodeAndMerchantId(pCode, mId);
+		return pr.findByProductCode(productCode);
 	}
 
 }
