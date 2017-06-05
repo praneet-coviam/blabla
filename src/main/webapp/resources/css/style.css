@@ -5,9 +5,10 @@
     width: 19%;
     height: 100%;
     font-size: 12px;
-    z-index: 5;
+    z-index: 1000;
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.15);
     transition: left 250ms ease;
+    
 }
 
 .slider-home{
@@ -35,30 +36,56 @@ min-height: 400px;
 body{
       background: url(../images/white_leather.png) repeat 0 0;
 }
-.span3 {
-    width: 220px;
-    float: left;
-    min-height: 1px;
-    margin-left: 20px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    color: #333333;
+.category{
+    margin: 0;
+    margin-top: 50px;
+    text-transform: uppercase;
+    color: #3e4152;
+    letter-spacing: .15em;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    max-height: 5em;
+    font-weight: 500;
 }
-.well-small {
-    padding: 9px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+.category_description{
+    margin-top: 0;
+    font-weight: 400;
+    line-height: 1em;
+    max-height: 3em;
+    color: #7e818c;
+    margin-bottom: 50px;
 }
-.well {
-    min-height: 20px;
-    padding: 19px;
-    margin-bottom: 20px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+.name{
+    color: #0066c0;
+    font-size: 25px;
+    font-weight: 300px
 }
-.logoimg{
-    padding-top: 100px;
+.merchant{
+    margin-top: 0;
+    font-weight: 200;
+    line-height: 1em;
+    max-height: 3em;
+    color: #7e818c;
+    font-size: 20px
+}
+.price{
+    color:#b12704;
+    font-size: 22px;
+    font-weight: 700
+}
+.product_action{
+    border: 2px outset #d4d5d9;
+}
+.product_action:hover{
+    cursor:pointer
+}
+.modal{
+    padding: 30px;
+    min-height: 200px
+}
+@media only screen and (min-width: 768px) {
+    #menu,#dropdown-nav{
+        display: none
+    }
+
 }
