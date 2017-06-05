@@ -1,5 +1,6 @@
 var myApp = angular.module('myApp', ["ngRoute"]);
 myApp.controller('myCtrl', function ($scope) {	
+  $('.modal').modal();
  
 });
 myApp.config(function($routeProvider) {
