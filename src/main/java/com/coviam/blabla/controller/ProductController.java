@@ -4,10 +4,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.coviam.blabla.dto.ProductAndMerchant;
 import com.coviam.blabla.entity.Product;
-import com.coviam.blabla.entity.ProductAndMerchant;
 import com.coviam.blabla.entity.ProductMerchant;
 import com.coviam.blabla.service.ProductMerchantServiceInterface;
 import com.coviam.blabla.service.ProductServiceInterface;
@@ -22,8 +22,8 @@ public class ProductController {
 	ProductMerchantServiceInterface pms;
 	
 	@RequestMapping(value = "/")
-	public Iterable<Product> getMyProduct(){
-		Iterable<Product> p = ps.getAllProducts();
+	public List<Product> getMyProduct(){
+		List<Product> p = ps.getAllProducts();
 		return p;
 	}
 	
@@ -66,14 +66,24 @@ public class ProductController {
 	
 	@RequestMapping("/product/{pCode}/{mId}")
 	public ProductAndMerchant getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
-
 		
-		ProductMerchant productMerchantList = pms.getProductDetails(pCode, mId);
+		List<ProductMerchant> productMerchantList = pms.getProductDetails(pCode, mId);
 		Product productList = ps.getProduct(pCode);
 		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
 		return  productAndMerchantList;
 		
 	}
+	
+	@RequestMapping("/product/{pCode}")
+	public ProductAndMerchant getProductList(@PathVariable("pCode") int pCode){
+		
+		List<ProductMerchant> productMerchantList = pms.getMerchantDetails(pCode);
+		Product productList = ps.getProduct(pCode);
+		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
+		return  productAndMerchantList;
+		
+	}
+	
 	
 	
 }

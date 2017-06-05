@@ -1,12 +1,16 @@
-package com.coviam.blabla.entity;
+package com.coviam.blabla.dto;
 
+import java.util.List;
+
+import com.coviam.blabla.entity.Product;
+import com.coviam.blabla.entity.ProductMerchant;
 
 public class ProductAndMerchant {
 
 	private Product product;
-	private ProductMerchant productmerchant;
+	private List<ProductMerchant> productmerchant;
 	
-	public ProductAndMerchant(Product product, ProductMerchant productmerchant) {
+	public ProductAndMerchant(Product product, List<ProductMerchant> productmerchant) {
 		super();
 		this.product = product;
 		this.productmerchant = productmerchant;
@@ -20,11 +24,11 @@ public class ProductAndMerchant {
 		this.product = product;
 	}
 
-	public ProductMerchant getProductmerchant() {
+	public List<ProductMerchant> getProductmerchant() {
 		return productmerchant;
 	}
 
-	public void setProductmerchant(ProductMerchant productmerchant) {
+	public void setProductmerchant(List<ProductMerchant> productmerchant) {
 		this.productmerchant = productmerchant;
 	}
 

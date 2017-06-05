@@ -16,9 +16,9 @@ public class ProductService implements ProductServiceInterface{
 //	ProductMerchantRepository pmr;
 	
 	@Override
-	public Iterable<Product> getAllProducts() {
+	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
-		return pr.findAll();
+		return (List<Product>) pr.findAll();
 	}
 
 	@Override

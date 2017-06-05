@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "product_merchant")
-public class ProductMerchant implements Serializable{
+public class ProductMerchant implements Serializable {
 
 	/**
 	 * 
@@ -19,16 +19,16 @@ public class ProductMerchant implements Serializable{
 	@Id
 	@Column(name = "product_code")
 	int productCode;
-	
+
 	@Column(name = "merchant_id")
 	int merchantId;
-	
+
 	@Column(name = "price")
 	float price;
-	
+
 	@Column(name = "stock")
 	long stock;
-	
+
 	@Column(name = "score")
 	long score;
 
@@ -77,7 +77,5 @@ public class ProductMerchant implements Serializable{
 		return "ProductMerchant [productCode=" + productCode + ", merchantId=" + merchantId + ", price=" + price
 				+ ", stock=" + stock + ", score=" + score + "]";
 	}
-	
-	
-	
+
 }

@@ -1,5 +1,6 @@
 package com.coviam.blabla.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.coviam.blabla.dao.ProductMerchantRepository;
@@ -12,9 +13,16 @@ public class ProductMerchantService implements ProductMerchantServiceInterface{
 	ProductMerchantRepository pmr;
 	
 	@Override
-	public ProductMerchant getProductDetails(int productCode, int merchantId) {
+	public List<ProductMerchant> getProductDetails(int productCode, int merchantId) {
 		// TODO Auto-generated method stub
-		ProductMerchant productmerchantlist = pmr.findByProductCodeAndMerchantId(productCode,merchantId);		
+		List<ProductMerchant> productmerchantlist = pmr.findByProductCodeAndMerchantIdOrderByScore(productCode,merchantId);		
+		return productmerchantlist;
+	}
+
+	@Override
+	public List<ProductMerchant> getMerchantDetails(int productCode) {
+		// TODO Auto-generated method stub
+		List<ProductMerchant> productmerchantlist = (List<ProductMerchant>) pmr.findByProductCode(productCode);
 		return productmerchantlist;
 	}
 
