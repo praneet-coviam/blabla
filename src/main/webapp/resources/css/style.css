@@ -76,7 +76,7 @@ body{
 .product_action{
     border: 2px outset #d4d5d9 ;
 }
-.product_action:hover{
+.product_action,#cart:hover{
     cursor:pointer
 }
 .modal{
@@ -96,8 +96,8 @@ body{
     line-height: 40px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    background-color: black;
-    color: white;
+    border:1px solid;
+    color: black;
     margin-left: 5px;
     text-align: center;
     font-size: 2em;
