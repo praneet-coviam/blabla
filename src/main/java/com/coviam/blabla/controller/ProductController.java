@@ -65,31 +65,24 @@ public class ProductController {
 	
 	
 	@RequestMapping("/product/{pCode}/{mId}")
-<<<<<<< HEAD
 	public ProductAndMerchant getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
 		
 		List<ProductMerchant> productMerchantList = pms.getProductDetails(pCode, mId);
 		Product productList = ps.getProduct(pCode);
 		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
 		return  productAndMerchantList;
-=======
-	public ProductMerchant getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
-
-		ProductMerchant productMerchantList = ps.findAndOrder(pCode, mId);
-		return productMerchantList;
->>>>>>> 9eff2d342d75e30c08fd1b63d7b77175e05d8e25
 		
 	}
 	
-	@RequestMapping("/product/{pCode}")
-	public ProductAndMerchant getProductList(@PathVariable("pCode") int pCode){
-		
-		List<ProductMerchant> productMerchantList = pms.getMerchantDetails(pCode);
-		Product productList = ps.getProduct(pCode);
-		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
-		return  productAndMerchantList;
-		
-	}
+//	@RequestMapping("/product/{pCode}")
+//	public ProductAndMerchant getProductList(@PathVariable("pCode") int pCode){
+//		
+//		List<ProductMerchant> productMerchantList = pms.getMerchantDetails(pCode);
+//		Product productList = ps.getProduct(pCode);
+//		ProductAndMerchant productAndMerchantList = new ProductAndMerchant(productList, productMerchantList);		
+//		return  productAndMerchantList;
+//		
+//	}
 	
 	
 	

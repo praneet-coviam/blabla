@@ -28,15 +28,9 @@ public class ProductService implements ProductServiceInterface{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public Product getProduct(int productCode) {
 		// TODO Auto-generated method stub
 		return pr.findByProductCode(productCode);
-=======
-	public ProductMerchant findAndOrder(int pCode, int mId) {
-		// TODO Auto-generated method stub
-		return pmr.findByProductCodeAndMerchantId(pCode, mId);
->>>>>>> 9eff2d342d75e30c08fd1b63d7b77175e05d8e25
 	}
 
 }
