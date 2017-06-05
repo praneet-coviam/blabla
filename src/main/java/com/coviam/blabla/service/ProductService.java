@@ -32,9 +32,9 @@ public class ProductService implements ProductServiceInterface{
 	}
 
 	@Override
-	public List<ProductMerchant> findAndOrder(int pCode, int mId) {
+	public ProductMerchant findAndOrder(int pCode, int mId) {
 		// TODO Auto-generated method stub
-		return pmr.findOneOrderByScore(pCode, mId);
+		return pmr.findByProductCodeAndMerchantId(pCode, mId);
 	}
 
 }

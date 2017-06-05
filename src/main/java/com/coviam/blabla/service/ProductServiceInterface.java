@@ -9,5 +9,5 @@ public interface ProductServiceInterface {
 
 	public Iterable<Product> getAllProducts();
 	public List<Product> findProduct(String query);
-	public List<ProductMerchant> findAndOrder(int pCode,int mId);
+	public ProductMerchant findAndOrder(int pCode,int mId);
 }

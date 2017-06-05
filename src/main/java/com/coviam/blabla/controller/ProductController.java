@@ -77,24 +77,10 @@ public class ProductController {
 	
 	
 	@RequestMapping("/product/{pCode}/{mId}")
-	public JSONObject getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
+	public ProductMerchant getOrderedProducts(@PathVariable("pCode") int pCode,@PathVariable("mId") int mId){
 
-		JSONObject toReturn = new JSONObject();
-		JSONObject productJson = new JSONObject();	
-		JSONArray productArray = new JSONArray();
-		long category = 0;
-		List<ProductMerchant> productMerchantList = ps.findAndOrder(pCode, mId);
-		for(ProductMerchant productMerchant : productMerchantList){
-			
-			productJson.put("code", productMerchant.getProdMerchGroupId());
-			productJson.put("name", productMerchant.getPrice());
-			productJson.put("usp", productMerchant.getScore());
-			productJson.put("desc", productMerchant.getStock());
-			category = productMerchant.getScore();
-			productArray.add(productJson);
-		}
-		toReturn.put(category,productArray);
-		return toReturn;
+		ProductMerchant productMerchantList = ps.findAndOrder(pCode, mId);
+		return productMerchantList;
 		
 	}
 	
