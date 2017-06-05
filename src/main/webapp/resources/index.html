@@ -10,6 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+   
  </head>
  <body ng-app="myApp" ng-controller="myCtrl">
     <div class="row" style="height:80%;">
@@ -55,21 +56,24 @@
                     </div>
                 </div>
                 <div class="col l2 s3 m3 valign-wrapper left" style="padding-left:65px">
-                    <img src='./images/cart.png' style="height:55px;width:50px">
-                    <div class="numberCircle">1</div>
+                    <img id="cart" src='./images/cart.png' ng-click="go('/cart')" style="height:55px;width:50px">
+                    <div class="numberCircle" >{{cartCount}}</div>
+                   
                 </div>
-                <div class="col s10 offset-s1">
+                <div class="col s11 offset-s1">
                    <div ng-view></div>
-                </div>            </div>
+                </div>            
+        </div>
         </div>
     </div>
+
     <footer>
         copy right
     </footer>
     <div id="email_modal" class="modal">
         <div class="row center" style="padding-top:35px">
          <div class="col s10 offset-s1"><input id="email" type="text" class="validate" placeholder="Email ID"></div>
-         <button class="btn waves-effect waves-light col s2 offset-s5z" type="submit" name="action">Submit
+         <button class="btn waves-effect waves-light col s2 offset-s5" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
          </button>
     </div>
