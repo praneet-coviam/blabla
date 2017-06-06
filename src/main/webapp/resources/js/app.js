@@ -36,7 +36,8 @@ myApp.controller('homeController', function($scope,$rootScope) {
 });
 myApp.controller('productController', function($scope) {
 
-    
+    $('ul.tabs').tabs();
+    $('ul.tabs').tabs('select_tab', 'tab_id');
 	$scope.name="ankit";
 
 });
