@@ -29,7 +29,7 @@ public class ProductController {
 
 	@RequestMapping("/test")
 	public ModelAndView testMethod() {
-		return new ModelAndView("index.html");
+		return new ModelAndView("index.html","Hello","Hello");
 	}
 
 	@RequestMapping("/category/{query}")
