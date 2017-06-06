@@ -77,7 +77,8 @@ myApp.controller('productController', function($scope) {
 
 });
 myApp.controller('listController', function($scope,userRepository) {
-    $scope.myMovie=function($scope,$window){
+    var data = "";
+    $scope.getViaCategory=function($scope){
           userRepository.getByCategory().success(function(data) {
            $scope.data = data;
         });
