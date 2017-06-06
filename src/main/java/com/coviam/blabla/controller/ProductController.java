@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.coviam.blabla.dto.ProductAndMerchant;
 import com.coviam.blabla.dto.ProductDetails;
 import com.coviam.blabla.entity.Product;
@@ -25,20 +24,20 @@ public class ProductController {
 	@RequestMapping(value = "/")
 	public ModelAndView returnAllProducts() {
 		List<Product> p = ps.getAllProducts();
-		return new ModelAndView("index.html","p",p);	
-		}
+		return new ModelAndView("index.html", "p", p);
+	}
 
 	@RequestMapping("/test")
-	public ModelAndView testMethod(){
+	public ModelAndView testMethod() {
 		return new ModelAndView("index.html");
 	}
-	
+
 	@RequestMapping("/category/{query}")
 	public List<Product> getProductByCategory(@PathVariable("query") String query) {
 
 		List<Product> productList = ps.findProduct(query);
 		return productList;
-
+		
 	}
 
 	@RequestMapping("/product/{pCode}/{mId}")
@@ -48,11 +47,11 @@ public class ProductController {
 		Product productList = ps.getProduct(pCode);
 		List<ProductSpecification> prodSpec = ps.getProductSpecificationsByProduct(pCode);
 		List<Integer> id = new ArrayList<Integer>();
-		for(ProductSpecification productSpec : prodSpec){
+		for (ProductSpecification productSpec : prodSpec) {
 			id.add(productSpec.getProdSpecId().getSpec_id());
 		}
 		List<Specification> specList = ps.getSpecsById(id);
-		ProductDetails productDetails = new ProductDetails(productList, prodSpec, productMerchantList,specList);
+		ProductDetails productDetails = new ProductDetails(productList, prodSpec, productMerchantList, specList);
 		return productDetails;
 
 	}
@@ -63,11 +62,12 @@ public class ProductController {
 		List<ProductMerchant> productMerchantList = ps.getMerchantDetails(pCode);
 		Product productList = ps.getProduct(pCode);
 		List<ProductSpecification> prodSpec = ps.getProductSpecificationsByProduct(pCode);
-		List<Integer> id  = new ArrayList<Integer>();
-		for(ProductSpecification productSpec : prodSpec){
+		List<Integer> id = new ArrayList<Integer>();
+		for (ProductSpecification productSpec : prodSpec) {
 			id.add(productSpec.getProdSpecId().getSpec_id());
-		}		List<Specification> specList = ps.getSpecsById(id);
-		ProductDetails productDetails = new ProductDetails(productList, prodSpec, productMerchantList,specList);
+		}
+		List<Specification> specList = ps.getSpecsById(id);
+		ProductDetails productDetails = new ProductDetails(productList, prodSpec, productMerchantList, specList);
 		return productDetails;
 
 	}
